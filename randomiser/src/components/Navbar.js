@@ -12,7 +12,7 @@ function Navbar() {
                 <label for="check" className="checkbtn">
                     <FontAwesomeIcon icon={faBars}/>
                 </label>
-                <label className="Navbar__logo">Randomizer</label>
+                <label className="Navbar__logo"><a href="/">Randomizer</a></label>
                 <ul>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Github</a></li>

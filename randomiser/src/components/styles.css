@@ -14,6 +14,11 @@ label.Navbar__logo{
     padding: 0 100px;
     font-weight: bold;
     letter-spacing: 2px;
+    cursor: pointer;
+}
+
+label.Navbar__logo a{
+    color: white;
 }
 
 nav ul{
@@ -36,7 +41,7 @@ nav ul li a{
     border-radius: 3px;
 }
 
-a:hover{
+nav ul li a:hover{
     background: white;
     color: black;
     transition: 0.5s;
@@ -81,7 +86,7 @@ a:hover{
     nav ul li a{
         font-size: 30px;
     }
-    a:hover{
+    nav ul li a:hover{
         background: white;
         padding: 0 50%;
         color: black;
