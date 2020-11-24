@@ -1,6 +1,20 @@
-import React from 'react'
-import {Grid} from '@material-ui/core';
-import {LeftPane,RightPane} from './index.js'
+import React, { Component } from 'react'
+import {Grid,Paper,List,ListItem,ListItemText,Typography} from '@material-ui/core';
+import {RightPane} from './index.js'
+import axios from 'axios';
+
+export default class Body extends Component {
+
+    constructor(props){
+        super(props);
+        this.state ={
+            paragraph:{}
+        }
+    }
+    
+    render() {
+
+
 const styles = {
     Container:{
         lineHeight:'400px',
@@ -22,17 +36,46 @@ const styles = {
     }
 }
 
-function Body() {
-    return (
-        <Grid container style={styles.Container}>
-            <Grid item sm={12} md={6}>  
-                <LeftPane styles={styles} />
-            </Grid>
-            <Grid item sm={12} md={6}>
-                <RightPane styles={styles}/>
-            </Grid>
-        </Grid>
-    )
+const quoteClickHandler = () =>{
+    axios.get('https://litipsum.com/api/json')
+    .then(response=>{
+        this.setState({paragraph:response.data});
+        console.log(response.data);
+    })
 }
 
-export default Body
+
+ const paragraphClickHandler = () =>{
+    console.log(typeof this.state.paragraph);
+}
+         
+        
+        return (
+            
+            <Grid container >
+            <Grid item sm={12} md={6}>  
+            <Paper style={styles.Paper}>
+            {/* <Button variant="contained" color="primary">Randomize</Button> */}
+    <List component="nav">
+        <ListItem button style={styles.Button} onClick={quoteClickHandler}>
+          <ListItemText><Typography variant="h6">
+                Randomize Quote
+              </Typography></ListItemText>
+        </ListItem>
+        <ListItem button style={styles.Button} onClick={paragraphClickHandler}>
+        <ListItemText><Typography variant="h6">
+                Randomize Paragraph
+              </Typography></ListItemText>
+        </ListItem>
+    </List>
+        </Paper>
+            </Grid>
+            <Grid item sm={12} md={6}>
+                <RightPane data={this.state.paragraph} styles={styles}/>
+            </Grid>
+        </Grid>
+          
+        )
+    }
+}
+

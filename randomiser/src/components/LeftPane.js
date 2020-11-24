@@ -7,7 +7,7 @@ const quoteClickHandler = () =>{
     axios.get('https://litipsum.com/api/json')
     .then(res=>{
         const data = res.data;
-        console.log(data);
+        // console.log(data);
     })
 }
 
@@ -37,4 +37,4 @@ function LeftPane({styles}) {
     )
 }
 
-export default LeftPane
+export default LeftPane;
